@@ -14,6 +14,7 @@ public class Contact {
 		this.mobileNumber = mobile;
 	}
 	
+	// Override toString() method
 	public String toString() {
 		return (firstName + middleName + lastName);
 	}
