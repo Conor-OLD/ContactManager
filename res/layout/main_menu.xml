@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainMenu" >
+
+    <Button
+        android:id="@+id/ButtonAddNew"
+        android:layout_marginTop="10dp"
+        android:text="@string/new_cont"
+        
+        android:textColor="#0000ff"
+    	
+    	style="@style/MenuButtonStyle" />
+    
+    
+    <Button
+        android:id="@+id/ButtonContList"
+        android:layout_below="@+id/ButtonAddNew"
+        android:layout_marginTop="30dp"
+        android:text="@string/view_list"
+        
+        android:textColor="#cc0000"
+    
+    	style="@style/MenuButtonStyle" />
+    
+    
+    <Button
+        android:id="@+id/ButtonSettings"
+        android:text="@string/action_settings"
+        android:layout_below="@+id/ButtonContList"
+    	android:layout_marginTop="30dp"
+    	
+    	android:textColor="#008000"
+    	
+    	style="@style/MenuButtonStyle" />
+
+    
+    <Button
+        android:id="@+id/ButtonHelp"
+        android:layout_below="@+id/ButtonSettings"
+        android:layout_marginTop="30dp"
+        android:text="@string/help_info"
+        
+        android:textColor="#ff9000"
+    	
+    	style="@style/MenuButtonStyle" />
+
+    
+    	
+    	
+
+    
+
+</RelativeLayout>

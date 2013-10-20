@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="csim080.softeng206.contactmanager"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="15" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="csim080.softeng206.contactmanager.MainMenu"
+            android:label="@string/title_activity_main_menu" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="csim080.softeng206.contactmanager.ContactListActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="csim080.softeng206.contactmanager.ContactDetailActivity"
+            android:label="@string/title_contact_detail"
+            android:parentActivityName=".ContactListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ContactListActivity" />
+        </activity>
+        <activity
+            android:name="csim080.softeng206.contactmanager.AddNewContact1"
+            android:label="@string/title_activity_add_new_contact1"
+            android:parentActivityName="csim080.softeng206.contactmanager.MainMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="csim080.softeng206.contactmanager.MainMenu" />
+        </activity>
+        <activity
+            android:name="csim080.softeng206.contactmanager.AddNewContact2"
+            android:label="@string/title_activity_add_new_contact2" >
+        </activity>
+        <activity
+            android:name="csim080.softeng206.contactmanager.ListActivity"
+            android:label="@string/title_activity_list"
+            android:parentActivityName="csim080.softeng206.contactmanager.MainMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="csim080.softeng206.contactmanager.MainMenu" />
+        </activity>
+        <activity
+            android:name="csim080.softeng206.contactmanager.AddNewContactPhoto"
+            android:label="@string/title_activity_add_new_contact_photo" >
+        </activity>
+        <activity
+            android:name="csim080.softeng206.contactmanager.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName="csim080.softeng206.contactmanager.MainMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="csim080.softeng206.contactmanager.MainMenu" />
+        </activity>
+    </application>
+
+</manifest>
