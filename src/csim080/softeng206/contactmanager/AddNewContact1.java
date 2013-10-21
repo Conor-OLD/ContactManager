@@ -14,6 +14,10 @@ public class AddNewContact1 extends Activity {
 	// Setup a tag constant to be used in logging
 	private static final String TAG = "AddContactName";
 	
+	// Declare an 'InputHolder' object variable; this will be used to save
+	// contact data while an 'AddContact' procedure is underway
+	private InputHolder inputHolder;
+	
 	private Button backButton;
 	private Button nextButton;
 	
@@ -21,12 +25,17 @@ public class AddNewContact1 extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_new_contact1);
+		
+		// Instantiate an inputHolder object (this will be the same object
+		// that is used in the following activities for Add Contact to
+		// temporarily store input information
+		inputHolder = new InputHolder();
+		
 		// Show the Up button in the action bar.
 		setupActionBar();
 		
 		
 		backButton = (Button)findViewById(R.id.button_back_add1);				
-				
 		// Set up the listener for the button (anonymous class for simplicity)
 		backButton.setOnClickListener(new View.OnClickListener() {
 			
@@ -44,6 +53,10 @@ public class AddNewContact1 extends Activity {
 			
 			@Override
 			public void onClick(View v) {
+				// Get the string contents from the input fields so that
+				// they can be updated to the 'InputHolder' object
+				
+				
 				Intent intent = new Intent();
 				intent.setClass(AddNewContact1.this, AddNewContact2.class);
 				// Finish this activity, the Android back button should just return

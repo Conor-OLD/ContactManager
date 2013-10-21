@@ -12,6 +12,10 @@ public class AddNewContactPhoto extends Activity {
 	// Setup a tag constant to be used in logging
 	private static final String TAG = "AddContactPhoto";
 	
+	// Declare an 'InputHolder' object variable; this will be used to save
+	// contact data while an 'AddContact' procedure is underway
+	private InputHolder inputHolder;
+	
 	Button yesButton;
 	Button noButton;
 	Button backButton;

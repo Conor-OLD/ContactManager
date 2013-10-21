@@ -8,6 +8,9 @@ public class Contact {
 	private String lastName;
 	private int mobileNumber;
 	private int homeNumber;
+	private int workNumber;
+	private String emailAddress;
+	private String homeAddress;
 	
 	public Contact(String first, String middle, String last, int mobile) {
 		this.firstName = first;

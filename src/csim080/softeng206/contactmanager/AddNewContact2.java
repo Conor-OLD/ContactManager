@@ -12,6 +12,10 @@ public class AddNewContact2 extends Activity {
 	// Setup a tag constant to be used in logging
 	private static final String TAG = "AddContactNumbers";
 	
+	// Declare an 'InputHolder' object variable; this will be used to save
+	// contact data while an 'AddContact' procedure is underway
+	private InputHolder inputHolder;
+	
 	Button backButton;
 	Button nextButton;
 
