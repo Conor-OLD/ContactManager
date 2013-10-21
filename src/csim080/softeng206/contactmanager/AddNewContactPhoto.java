@@ -20,6 +20,7 @@ public class AddNewContactPhoto extends Activity {
 	Button noButton;
 	Button backButton;
 	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

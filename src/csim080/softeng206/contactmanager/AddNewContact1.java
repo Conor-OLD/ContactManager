@@ -2,11 +2,14 @@ package csim080.softeng206.contactmanager;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 import android.support.v4.app.NavUtils;
 
 public class AddNewContact1 extends Activity {
@@ -18,8 +21,12 @@ public class AddNewContact1 extends Activity {
 	// contact data while an 'AddContact' procedure is underway
 	private InputHolder inputHolder;
 	
+	// Declare variables for the buttons and textboxes in the activity
 	private Button backButton;
 	private Button nextButton;
+	private EditText txtBoxFirst = null;
+	private EditText txtBoxMiddle = null;
+	private EditText txtBoxLast = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +62,39 @@ public class AddNewContact1 extends Activity {
 			public void onClick(View v) {
 				// Get the string contents from the input fields so that
 				// they can be updated to the 'InputHolder' object
+				txtBoxFirst = (EditText) findViewById(R.id.first_name);
+				txtBoxMiddle = (EditText) findViewById(R.id.middle_name);
+				txtBoxLast = (EditText) findViewById(R.id.last_name);
 				
+				String first = txtBoxFirst.getText().toString();
+				String middle = txtBoxMiddle.getText().toString();
+				String last = txtBoxLast.getText().toString();
 				
+				Toast.makeText(v.getContext(), "First name: " + first, Toast.LENGTH_LONG).show(); // DEBUG line
+				
+				// Check to see if at least the  first name field has been filled
+				/*if (first.isEmpty()) {
+					AlertDialog ad = new AlertDialog.Builder(v.getContext()).create();
+					ad.setButton(DialogInterface.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
+
+					            @Override
+					            public void onClick(DialogInterface ad, int which) {
+					                Intent i = new Intent(PronadjiKlopuActivity.this, TrenutnaLokacija.class);
+					                startActivity(i);               
+					            }
+					        });
+
+					        ad.setButton(DialogInterface.BUTTON_NEGATIVE, "No",new DialogInterface.OnClickListener() {
+
+					            @Override
+					            public void onClick(DialogInterface dialog, int which) {
+					                finish();
+
+					            }
+					        });
+					 ad.show();
+				}
+				*/
 				Intent intent = new Intent();
 				intent.setClass(AddNewContact1.this, AddNewContact2.class);
 				// Finish this activity, the Android back button should just return
