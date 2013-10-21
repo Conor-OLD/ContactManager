@@ -23,22 +23,26 @@ public class ContactDatabase {
 		
 	public ContactDatabase (Context co) {
 		
-		/*
+		
 		
 		// Set the database's android context
 		context = co;
 		
+		// Call the populate method
+		this.populateList();
+		
+		
+		
 		// Get the Android file directory that the database will be stored in
 		// The directory will be ContactManager
-		File fileDirectory = new File(context.getFilesDir(), "ContactManager");
+		//File fileDirectory = new File(context.getFilesDir(), "ContactManager");
 		// The datafile will be "contacts.txt"
-		File fullPath = new File(fileDirectory, "contacts.txt");
+		//File fullPath = new File(fileDirectory, "contacts.txt");
 		
 		//System.out.println("Opened location: " + fullPath.toString()); // DEBUG line
 		
 		
-		// Call the populate method
-		this.populateList();
+		
 		
 		/*try {
 			FileOutputStream outputStream;
@@ -108,6 +112,23 @@ public class ContactDatabase {
 		} catch (FileNotFoundException e) {
 			System.out.println("File does not exist, creating file."); // DEBUG line
 			Toast.makeText(context, "File does not exist, creating file", Toast.LENGTH_LONG).show();
+			
+			// Create an empty contacts database file to start from
+			try {
+				FileOutputStream outputStream;
+				outputStream = context.openFileOutput("contactFile.db", Context.MODE_PRIVATE);
+				outputStream.write("TESTSTRING".getBytes());
+				outputStream.flush();
+				outputStream.close();
+				System.out.println("Write success"); // DEBUG line
+				Toast.makeText(context, "Successfully created empty database file.", Toast.LENGTH_LONG).show(); // DEBUG line
+			} catch (FileNotFoundException e2) {
+				System.out.println("Cannot create empty database file."); // DEBUG line
+			} catch (Exception e2) {
+				e.printStackTrace();
+			}
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
