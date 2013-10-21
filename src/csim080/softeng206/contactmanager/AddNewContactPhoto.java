@@ -9,9 +9,13 @@ import android.widget.Button;
 
 public class AddNewContactPhoto extends Activity {
 	
+	// Setup a tag constant to be used in logging
+	private static final String TAG = "AddContactPhoto";
+	
 	Button yesButton;
 	Button noButton;
-
+	Button backButton;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -25,14 +29,29 @@ public class AddNewContactPhoto extends Activity {
 			@Override
 			public void onClick(View v) {
 			
-				Intent intent = new Intent();
-				intent.setClass(AddNewContactPhoto.this, MainMenu.class);
+				Intent intent = new Intent(getApplicationContext(), MainMenu.class);
 				
-				startActivity(intent);	
+				// Setting this flag upon a successful series of AddContact activities
+				// will ensure that all activities (i.e., the ones that were opened during the 
+				// addContact stage) will be removed from the stack
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				intent.putExtra("EXIT", true);
+				startActivity(intent);
 				
 				
 			}
 		});
+		
+		backButton = (Button)findViewById(R.id.button_photo_back);
+		backButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// Finish the add photo activity so that it isn't added to the stack
+				finish();
+			}
+		});
+		
 	}
 
 	@Override

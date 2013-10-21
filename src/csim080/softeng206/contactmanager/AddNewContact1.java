@@ -11,6 +11,9 @@ import android.support.v4.app.NavUtils;
 
 public class AddNewContact1 extends Activity {
 	
+	// Setup a tag constant to be used in logging
+	private static final String TAG = "AddContactName";
+	
 	private Button backButton;
 	private Button nextButton;
 	
@@ -29,10 +32,8 @@ public class AddNewContact1 extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent();
-				intent.setClass(AddNewContact1.this, MainMenu.class);
-				
-				startActivity(intent);				
+				// Finish the add names activity, returning to main menu
+				finish();				
 			}
 		});
 		
@@ -45,7 +46,8 @@ public class AddNewContact1 extends Activity {
 			public void onClick(View v) {
 				Intent intent = new Intent();
 				intent.setClass(AddNewContact1.this, AddNewContact2.class);
-				
+				// Finish this activity, the Android back button should just return
+				// to main menu if pressed at any point during the add contacts stage
 				startActivity(intent);				
 			}
 		});

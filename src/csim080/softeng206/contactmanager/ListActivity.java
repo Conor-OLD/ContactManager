@@ -17,10 +17,15 @@ import android.support.v4.app.NavUtils;
 
 public class ListActivity extends Activity {
 	
+	// Setup a tag constant to be used in logging
+	private static final String TAG = "ContactList";
+	
 	private ListView listView;
 	private Button sortFirstButton;
 	private Button sortLastButton;
 	private Button toMenuButton;
+	// Class has its own ContactDatabase
+	private ContactDatabase cd;
 	
 
 	@Override
@@ -31,11 +36,20 @@ public class ListActivity extends Activity {
 		setupActionBar();
 		
 		listView = (ListView)findViewById(R.id.list_view);
+		// Set up the Contact Database using the listView's context.
+		// The contactDatabase constructor is called with this context, from which
+		// the newly-instantiated ContactDatabase object uses the context to find
+		// the appropriate file directory in the Android device's internal storage
+		// that it then uses to populate its own 'ContactList' List object, which
+		// contains 'Contact' objects
+		cd = new ContactDatabase(listView.getContext());
+		
 		sortFirstButton = (Button)findViewById(R.id.sort_firstname);
 		sortLastButton = (Button)findViewById(R.id.sort_lastname);
 		toMenuButton = (Button)findViewById(R.id.return_menu);
 		
 		toMenuButton.setOnClickListener(new View.OnClickListener() {
+			
 			
 			@Override
 			public void onClick(View v) {
@@ -53,6 +67,7 @@ public class ListActivity extends Activity {
 	// the list viewer for the Contact list activity
 	
 	private void setupListView() {
+		//this.cd = 
 		// Real implementation will draw on the 'Contact' class
 		List<String> displayList = new ArrayList<String>();
 		displayList.add("John Smith");
@@ -60,6 +75,7 @@ public class ListActivity extends Activity {
 		displayList.add("Doug McDonald");
 		displayList.add("Mark Andrews");
 		displayList.add("Nicola Andrews");
+		displayList.add("Jakob Henry");
 		
 		ListAdapter listAdapter = new ArrayAdapter<String>(
 				ListActivity.this, android.R.layout.simple_list_item_1, displayList);

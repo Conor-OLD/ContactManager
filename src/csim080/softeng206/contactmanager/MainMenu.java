@@ -3,11 +3,15 @@ package csim080.softeng206.contactmanager;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
 public class MainMenu extends Activity {
+	
+	// Setup a tag constant to be used in logging
+	private static final String TAG = "MainMenu";
 
 	// Create a button object
 	private Button buttonViewContacts;
@@ -29,6 +33,8 @@ public class MainMenu extends Activity {
 			
 			@Override
 			public void onClick(View v) {
+				
+				Log.d(TAG, "buttonViewContacts clicked");
 
 				// Decide the action to be performed upon click (i.e. start
 				// the appropriate activity by setting the class of the new 

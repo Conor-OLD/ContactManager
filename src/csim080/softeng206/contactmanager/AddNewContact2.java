@@ -9,6 +9,9 @@ import android.widget.Button;
 
 public class AddNewContact2 extends Activity {
 	
+	// Setup a tag constant to be used in logging
+	private static final String TAG = "AddContactNumbers";
+	
 	Button backButton;
 	Button nextButton;
 
@@ -24,10 +27,8 @@ public class AddNewContact2 extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent();
-				intent.setClass(AddNewContact2.this, AddNewContact1.class);
-				
-				startActivity(intent);				
+				// Finish the add phone numbers activity, which will return to previous screen
+				finish();				
 			}
 		});
 		
