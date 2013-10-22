@@ -80,5 +80,15 @@ public class InputHolder {
 		instance = null;
 	}
 	
+	public Contact createContact() {
+		// This creates a contact. This should only be performed once per 
+		// instantiation of InputHolder, so it is appropriate that the 
+		// instantiation is destroyed after the contact is created. This
+		// cannot be done within this method, so it should be done as soon
+		// as possible by the calling class.
+		Contact contact = new Contact(firstName, middleName, lastName, mobileNumber, homeNumber, workNumber, homeAddress, emailAddress);
+		return contact;
+	}
+	
 	
 }

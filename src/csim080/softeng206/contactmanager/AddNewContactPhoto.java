@@ -2,6 +2,8 @@ package csim080.softeng206.contactmanager;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
@@ -26,24 +28,52 @@ public class AddNewContactPhoto extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_new_contact_photo);
 		
-		//yesButton = (Button)findViewFromId
+		// Get the running instance of the singleton 'InputHolder'
+		inputHolder = InputHolder.getInstance();
 		
+		
+	    //yesButton = (Button)findViewFromId
+			
 		noButton = (Button)findViewById(R.id.button_photo_no);
 		noButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-			
-				Intent intent = new Intent(getApplicationContext(), MainMenu.class);
 				
-				// Setting this flag upon a successful series of AddContact activities
-				// will ensure that all activities (i.e., the ones that were opened during the 
-				// addContact stage) will be removed from the stack
-				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				intent.putExtra("EXIT", true);
-				startActivity(intent);
+				AlertDialog ad = new AlertDialog.Builder(v.getContext()).create();
+				Contact contact = inputHolder.createContact();
 				
+				// Instantiate a contactDatabase object; this will be used to update
+				// the contact database in memory
+				ContactDatabase cd = new ContactDatabase(v.getContext());
+				cd.addContact(contact);
+				cd.finishOperations();
 				
+				ad.setMessage(contact + " was added to your contacts.");
+				ad.setButton(DialogInterface.BUTTON_NEUTRAL, "Ok", new DialogInterface.OnClickListener() {
+											
+					
+		            @Override
+		            public void onClick(DialogInterface ad, int which) {
+		                // This is a dialog box that informs the user that
+		            	// the contact was successfully created.
+		            	
+		            	// It returns to main menu (and clears the stack, thus
+		            	// ridding it of the AddContact activity sequence)
+						Intent intent = new Intent(getApplicationContext(), MainMenu.class);
+						
+						// Setting this flag upon a successful series of AddContact activities
+						// will ensure that all activities (i.e., the ones that were opened during the 
+						// addContact stage) will be removed from the stack
+						intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+						intent.putExtra("EXIT", true);
+						startActivity(intent);
+		            	
+					}
+		            
+				});
+		        
+				ad.show();
 			}
 		});
 		

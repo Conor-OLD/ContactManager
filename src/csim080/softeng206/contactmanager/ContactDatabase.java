@@ -19,17 +19,21 @@ public class ContactDatabase {
 	// using said functions
 
 	private List<Contact> contactList;
+	private int totalContacts; // This is a variable that will be used to
+	// determine IDs for contacts as they are added;
 	private Context context;
 		
 	public ContactDatabase (Context co) {
-		
-		
-		
 		// Set the database's android context
 		context = co;
 		
-		// Call the populate method
+		// Initialize the contact list
+		contactList = new ArrayList<Contact>();
+		
+		// Call the populate method with the constructor
 		this.populateList();
+		
+		
 		
 		
 		
@@ -98,11 +102,13 @@ public class ContactDatabase {
 			BufferedReader br = new BufferedReader(in);
 			
 			String line = null;
-			String sep = System.getProperty("line.separator");
+			//String sep = System.getProperty("line.separator");
 			StringBuffer sb = new StringBuffer();
 			
-			while ((line = br.readLine()) != null)
-				sb.append(line).append(sep);
+			while ((line = br.readLine()) != null) {
+				lines.add(line);
+				System.out.println("Read line: " + line);
+			}
 			
 			String done = sb.toString();
 			Toast.makeText(context, "Successfully read " + done, Toast.LENGTH_LONG).show(); // DEBUG line
@@ -117,7 +123,7 @@ public class ContactDatabase {
 			try {
 				FileOutputStream outputStream;
 				outputStream = context.openFileOutput("contactFile.db", Context.MODE_PRIVATE);
-				outputStream.write("TESTSTRING".getBytes());
+				//outputStream.write("TESTSTRING".getBytes());
 				outputStream.flush();
 				outputStream.close();
 				System.out.println("Write success"); // DEBUG line
@@ -132,34 +138,49 @@ public class ContactDatabase {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
-		
-		
-		
-		/*try {
+	}
+	
+	// Method that is called as the object is destroyed; it writes the
+	// contact database (including the ID value) to file.
+	public void finishOperations() {
+		// Overwrite the datafile in memory with the up-to-date data
+		try {
 			FileOutputStream outputStream;
-			outputStream = context.openFileOutput("testfile.txt", Context.MODE_PRIVATE);
-			outputStream.write("0xffff".getBytes());
+			outputStream = context.openFileOutput("contactFile.db", Context.MODE_PRIVATE);
+			StringBuilder sb = new StringBuilder();
+			String line = null;
+			
+			// Append the max pid value to the top of the file, it will
+			// be important for assigning IDs to future contacts
+			sb.append(totalContacts);
+			sb.append("\n");
+			
+			// Append the file-friendly versions of all the contacts
+			for (Contact c : contactList) {
+				sb.append(c.getFileFriendlyText());
+			}
+			
+			outputStream.write(sb.toString().getBytes());
 			outputStream.flush();
 			outputStream.close();
 			System.out.println("Write success"); // DEBUG line
-			Toast.makeText(context, "Successfully wrote TestWrite", Toast.LENGTH_LONG).show(); // DEBUG line
-			  
+			Toast.makeText(context, "Successfully rewrote database file.", Toast.LENGTH_LONG).show(); // DEBUG line
 		} catch (FileNotFoundException e) {
-			System.out.println("Write fail"); // DEBUG line
+			System.out.println("Cannot access database file."); // DEBUG line
 		} catch (Exception e) {
 			e.printStackTrace();
-		}*/
-		
-		
+		}
 	}
 	
+	
+	// This function simply adds a contact to the ArrayList of contacts
+	// (the main data storage attribute of the class)
 	public void addContact(Contact contact) {
 		contactList.add(contact);
 	}
 	
-	public void delete(Contact contact) {
+	// Deletes a contact from the list, by ID
+	public void delete(int id) {
 		// Stub
 	}
 	
