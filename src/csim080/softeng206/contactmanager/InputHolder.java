@@ -23,37 +23,61 @@ public class InputHolder {
 	// Only one can be instantiated at once (singleton class), but it
 	// can be associated with one of each of the activity classes that
 	// require it. ## Singleton nature yet to be implemented
+
 	
-	//private List<Activity> subscribers;
+	
+	private static InputHolder instance = null;
 	
 	private String firstName;
 	private String middleName;
 	private String lastName;
-	private int mobileNumber;
-	private int homeNumber;
-	private int workNumber;
+	private String mobileNumber;
+	private String homeNumber;
+	private String workNumber;
 	private String emailAddress;
 	private String homeAddress;
 	
-	// Blank constructor
-	public InputHolder() {
+	// Blank, private constructor; can only be 'called' with the getInstance()
+	// method to prevent multiple instantiations
+	private InputHolder() {
 		// Nothing here
 	}
 	
+	// Implement singleton instance-returning method
+	public static InputHolder getInstance() {
+		if (instance == null ) {
+			instance = new InputHolder();
+		}
+		return instance;
+	}
+	
 	// Method called to get names after first AddContact activity
-	public void getNames(String first, String middle, String last) {
+	public void setNames(String first, String middle, String last) {
 		firstName = first;
 		middleName = middle;
 		lastName = last;
 	}
 	
 	// Method called to get numbers & addresses after first AddContact activity
-	public void getNumbers(int mob, int home, int work, String email, String homeAd) {
+	public void setNumbers(String mob, String home, String work, String email, String homeAd) {
 		mobileNumber = mob;
 		homeNumber = home;
 		workNumber = work;
 		emailAddress = email;
 		homeAddress = homeAd;		
+	}
+
+	
+	// [Debugging only] Getter method for first name
+	public String firstNameCall() {
+		return firstName;
+	}
+	
+	// This destroys the instance so that it doesn't persist if the user wants
+	// to add another contact, which will require instantiating the class again,
+	// which can only be done if the object field is NULL.
+	public static void destroyInstance() {
+		instance = null;
 	}
 	
 	

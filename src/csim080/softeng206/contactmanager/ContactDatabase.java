@@ -175,7 +175,7 @@ public class ContactDatabase {
 	public Contact searchByString(String keyword) {
 		// Stub method; will search contacts by first name, then last name
 		// (maybe middle name as well, yet to be decided)
-		return (new Contact("", "", "", 0));
+		return (new Contact("", "", "", "", "", "", "", ""));
 	}
 	
 }

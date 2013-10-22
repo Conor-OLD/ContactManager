@@ -37,7 +37,7 @@ public class AddNewContact1 extends Activity {
 		// Instantiate an inputHolder object (this will be the same object
 		// that is used in the following activities for Add Contact to
 		// temporarily store input information
-		inputHolder = new InputHolder();
+		inputHolder = InputHolder.getInstance();
 		
 		// Show the Up button in the action bar.
 		setupActionBar();
@@ -71,19 +71,20 @@ public class AddNewContact1 extends Activity {
 				String middle = txtBoxMiddle.getText().toString();
 				String last = txtBoxLast.getText().toString();
 				
-				Toast.makeText(v.getContext(), "First name: " + first, Toast.LENGTH_LONG).show(); // DEBUG line
+				//Toast.makeText(v.getContext(), "First name: " + first, Toast.LENGTH_LONG).show(); // DEBUG line
 				
 				// Check to see if at least the  first name field has been filled
 				if (first.isEmpty()) {
 					AlertDialog ad = new AlertDialog.Builder(v.getContext()).create();
 					ad.setMessage("The contact must have a first name.");
 					ad.setButton(DialogInterface.BUTTON_NEUTRAL, "Ok", new DialogInterface.OnClickListener() {
-						
-						
+												
 						
 			            @Override
 			            public void onClick(DialogInterface ad, int which) {
-			                // This is just a working              
+			                // This is just a warning dialog box, so once the 
+			            	// button is clicked it will return to the activity, leaving
+			            	// the text boxes unchanged.
 						}
 			            
 					});
@@ -98,8 +99,7 @@ public class AddNewContact1 extends Activity {
 					intent.setClass(AddNewContact1.this, AddNewContact2.class);
 					
 					// Update the input holder object and pass it on
-					
-					
+					inputHolder.setNames(first, middle, last);
 					startActivity(intent);
 				}
 			}
