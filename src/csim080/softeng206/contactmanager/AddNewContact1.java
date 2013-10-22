@@ -3,6 +3,7 @@ package csim080.softeng206.contactmanager;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -73,33 +74,34 @@ public class AddNewContact1 extends Activity {
 				Toast.makeText(v.getContext(), "First name: " + first, Toast.LENGTH_LONG).show(); // DEBUG line
 				
 				// Check to see if at least the  first name field has been filled
-				/*if (first.isEmpty()) {
+				if (first.isEmpty()) {
 					AlertDialog ad = new AlertDialog.Builder(v.getContext()).create();
-					ad.setButton(DialogInterface.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
-
-					            @Override
-					            public void onClick(DialogInterface ad, int which) {
-					                Intent i = new Intent(PronadjiKlopuActivity.this, TrenutnaLokacija.class);
-					                startActivity(i);               
-					            }
-					        });
-
-					        ad.setButton(DialogInterface.BUTTON_NEGATIVE, "No",new DialogInterface.OnClickListener() {
-
-					            @Override
-					            public void onClick(DialogInterface dialog, int which) {
-					                finish();
-
-					            }
-					        });
-					 ad.show();
+					ad.setMessage("The contact must have a first name.");
+					ad.setButton(DialogInterface.BUTTON_NEUTRAL, "Ok", new DialogInterface.OnClickListener() {
+						
+						
+						
+			            @Override
+			            public void onClick(DialogInterface ad, int which) {
+			                // This is just a working              
+						}
+			            
+					});
+			        
+					ad.show();
+					
+				// If the first name field is filled correctly, then continue, storing
+				// the values from the text field into the InputHolder
+				} else {
+				
+					Intent intent = new Intent();
+					intent.setClass(AddNewContact1.this, AddNewContact2.class);
+					
+					// Update the input holder object and pass it on
+					
+					
+					startActivity(intent);
 				}
-				*/
-				Intent intent = new Intent();
-				intent.setClass(AddNewContact1.this, AddNewContact2.class);
-				// Finish this activity, the Android back button should just return
-				// to main menu if pressed at any point during the add contacts stage
-				startActivity(intent);				
 			}
 		});
 		
