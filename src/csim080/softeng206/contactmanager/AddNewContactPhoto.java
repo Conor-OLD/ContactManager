@@ -46,6 +46,9 @@ public class AddNewContactPhoto extends Activity {
 				// Instantiate a contactDatabase object; this will be used to update
 				// the contact database in memory
 				ContactDatabase cd = new ContactDatabase(v.getContext());
+				// Set the ID of the new contact, using the current number of
+				// total contacts in the database
+				contact.setPid(cd.getANewID());
 				cd.addContact(contact);
 				cd.finishOperations();
 				
@@ -59,7 +62,7 @@ public class AddNewContactPhoto extends Activity {
 		            	// the contact was successfully created.
 		            	
 		            	// It returns to main menu (and clears the stack, thus
-		            	// ridding it of the AddContact activity sequence)
+		            	// emptying it of the AddContact activity sequence)
 						Intent intent = new Intent(getApplicationContext(), MainMenu.class);
 						
 						// Setting this flag upon a successful series of AddContact activities

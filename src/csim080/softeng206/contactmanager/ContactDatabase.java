@@ -33,67 +33,10 @@ public class ContactDatabase {
 		// Call the populate method with the constructor
 		this.populateList();
 		
-		
-		
-		
-		
-		// Get the Android file directory that the database will be stored in
-		// The directory will be ContactManager
-		//File fileDirectory = new File(context.getFilesDir(), "ContactManager");
-		// The datafile will be "contacts.txt"
-		//File fullPath = new File(fileDirectory, "contacts.txt");
-		
-		//System.out.println("Opened location: " + fullPath.toString()); // DEBUG line
-		
-		
-		
-		
-		/*try {
-			FileOutputStream outputStream;
-			outputStream = context.openFileOutput("testfile.txt", Context.MODE_PRIVATE);
-			outputStream.write("0xffff".getBytes());
-			outputStream.flush();
-			outputStream.close();
-			System.out.println("Write success"); // DEBUG line
-			Toast.makeText(context, "Successfully wrote TestWrite", Toast.LENGTH_LONG).show(); // DEBUG line
-			  
-		} catch (FileNotFoundException e) {
-			System.out.println("Write fail"); // DEBUG line
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			FileInputStream fin = context.openFileInput("testfile.txt");
-			InputStreamReader in = new InputStreamReader(fin);
-			BufferedReader br = new BufferedReader(in);
-			
-			String line = null;
-			String sep = System.getProperty("line.separator");
-			StringBuffer sb = new StringBuffer();
-			
-			while ((line = br.readLine()) != null)
-				sb.append(line).append(sep);
-			
-			String done = sb.toString();
-			Toast.makeText(context, "Successfully read " + done, Toast.LENGTH_LONG).show(); // DEBUG line
-			
-		} catch (FileNotFoundException e) {
-			System.out.println("cant read from file"); // DEBUG line
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		
-		*/
-		
 	}
 	
 	// Function that reads the list of contacts from memory
 	public void populateList() {
-		// Instantiate a list of strings that will hold the raw lines that
-		// are read from the device's internal memory
-		List<String> lines = new ArrayList<String>();
 		
 		// Read the contents of the internal memory to the list of strings
 		try {
@@ -105,13 +48,53 @@ public class ContactDatabase {
 			//String sep = System.getProperty("line.separator");
 			StringBuffer sb = new StringBuffer();
 			
-			while ((line = br.readLine()) != null) {
-				lines.add(line);
-				System.out.println("Read line: " + line);
+			// Read initial line (totalContacts value)
+			line = br.readLine();			
+			try {
+				totalContacts = Integer.parseInt(line);
+			} catch (NumberFormatException e) {
+				System.out.println("Database is corrupt. Exiting...");
+				System.exit(1);
 			}
 			
-			String done = sb.toString();
-			Toast.makeText(context, "Successfully read " + done, Toast.LENGTH_LONG).show(); // DEBUG line
+			Contact contact;
+			int pid = 0;
+			String first;
+			String middle;
+			String last;
+			String mobile;
+			String home;
+			String work;
+			String email;
+			String homeAd;
+			
+			while ((line = br.readLine()) != null) {
+				try {
+					pid = Integer.parseInt(line);
+				} catch (NumberFormatException e) {
+					System.out.println("Database is corrupt. Exiting...");
+					System.exit(1);
+				}
+				first = br.readLine();
+				middle = br.readLine();
+				last = br.readLine();
+				mobile = br.readLine();
+				home = br.readLine();
+				work = br.readLine();
+				email = br.readLine();
+				homeAd = br.readLine();
+				
+				contact = new Contact(first, middle, last, mobile, home, work, email, homeAd);
+				contact.setPid(pid);
+				contactList.add(contact);
+				
+				System.out.println("End of contact = " + homeAd);
+			}
+			
+			
+			//Toast.makeText(context, "Successfully read file.", Toast.LENGTH_LONG).show(); // DEBUG line
+			
+			
 			
 		// If the file isn't found, there is no contact database, so create a
 		// database that can be worked with.
@@ -123,7 +106,9 @@ public class ContactDatabase {
 			try {
 				FileOutputStream outputStream;
 				outputStream = context.openFileOutput("contactFile.db", Context.MODE_PRIVATE);
-				//outputStream.write("TESTSTRING".getBytes());
+				// Blank database will begin with 0, signifying that there
+				// are no contacts in the database.
+				outputStream.write("0".getBytes());
 				outputStream.flush();
 				outputStream.close();
 				System.out.println("Write success"); // DEBUG line
@@ -163,8 +148,8 @@ public class ContactDatabase {
 			outputStream.write(sb.toString().getBytes());
 			outputStream.flush();
 			outputStream.close();
-			System.out.println("Write success"); // DEBUG line
-			Toast.makeText(context, "Successfully rewrote database file.", Toast.LENGTH_LONG).show(); // DEBUG line
+			//System.out.println("Write success"); // DEBUG line
+			//Toast.makeText(context, "Successfully rewrote database file.", Toast.LENGTH_LONG).show(); // DEBUG line
 		} catch (FileNotFoundException e) {
 			System.out.println("Cannot access database file."); // DEBUG line
 		} catch (Exception e) {
@@ -177,6 +162,7 @@ public class ContactDatabase {
 	// (the main data storage attribute of the class)
 	public void addContact(Contact contact) {
 		contactList.add(contact);
+		totalContacts++;
 	}
 	
 	// Deletes a contact from the list, by ID
@@ -197,6 +183,18 @@ public class ContactDatabase {
 		// Stub method; will search contacts by first name, then last name
 		// (maybe middle name as well, yet to be decided)
 		return (new Contact("", "", "", "", "", "", "", ""));
+	}
+	
+	// Getter for number of contacts that have ever existed in the database; 
+	// used for determining the PID of a new contact. 
+	// When there are 0 contacts in the database, this will be 0, so the first
+	// time a contact is added, they will be assigned PID number 0. This
+	// means that simply returning the value of 'totalContacts' will suffice
+	// as a PID for a new contact. Adding a contact to the database will 
+	// increment this number, so it will always be in sync with new contacts
+	// being added.
+	public int getANewID() {
+		return totalContacts;
 	}
 	
 }

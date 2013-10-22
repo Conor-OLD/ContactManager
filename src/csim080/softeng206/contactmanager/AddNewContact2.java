@@ -69,7 +69,7 @@ public class AddNewContact2 extends Activity {
 				
 				inputHolder.setNumbers(mobile, home, work, email, homeAd);
 				
-				Toast.makeText(v.getContext(), "First name: " + inputHolder.firstNameCall(), Toast.LENGTH_LONG).show(); // DEBUG line
+				//Toast.makeText(v.getContext(), "First name: " + inputHolder.firstNameCall(), Toast.LENGTH_LONG).show(); // DEBUG line
 				
 				Intent intent = new Intent();
 				intent.setClass(AddNewContact2.this, AddNewContactPhoto.class);
