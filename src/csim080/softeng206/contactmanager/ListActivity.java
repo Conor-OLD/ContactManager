@@ -5,14 +5,19 @@ import java.util.List;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.support.v4.app.NavUtils;
 
 public class ListActivity extends Activity {
@@ -66,9 +71,10 @@ public class ListActivity extends Activity {
 	// This function holds all the responsibility for setting up
 	// the list viewer for the Contact list activity
 	
-	private void setupListView() {
-		//this.cd = 
-		// Real implementation will draw on the 'Contact' class
+	private void setupListView() {		
+		// Test-only implementation
+		
+		/*
 		List<String> displayList = new ArrayList<String>();
 		displayList.add("John Smith");
 		displayList.add("Mary Smith");
@@ -80,7 +86,50 @@ public class ListActivity extends Activity {
 		ListAdapter listAdapter = new ArrayAdapter<String>(
 				ListActivity.this, android.R.layout.simple_list_item_1, displayList);
 		listView.setAdapter(listAdapter);
+		*/
 		
+		ListAdapter listAdapter = new ContactListAdapter(ListActivity.this, cd.getContactList());
+		listView.setAdapter(listAdapter);
+	}
+	
+	private class ContactListAdapter extends ArrayAdapter {
+		
+		private Context context;
+		private List<Contact> contactList;
+		
+		private ContactListAdapter(Context c, List<Contact> lis) {
+			super(c, android.R.layout.simple_list_item_1, lis);
+			this.context = c;
+			this.contactList = lis;
+		}
+		
+		public View getView(int position, View convertView, ViewGroup parent) {
+			// The LayoutInflater will convert the xml code for the layout
+			// into Java code, so initialize it and then use it to inflate xml
+			LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			View listItemView = inflater.inflate(R.layout.contact_list_item_layout, null);
+			
+			TextView first = (TextView) listItemView.findViewById(R.id.list_item_text_first_name);
+			TextView last = (TextView) listItemView.findViewById(R.id.list_item_text_last_name);
+			TextView mobile = (TextView) listItemView.findViewById(R.id.list_item_text_mobile_number);
+			
+			first.setText(contactList.get(position).getFirstName());
+			last.setText(contactList.get(position).getLastName());
+			mobile.setText(contactList.get(position).getMobile());
+			
+			// Set the background to alternate colours, for easier
+			// readability (not used anymore, disables clickable)
+			/*if (position % 3 == 1)
+			
+			if (position % 2 == 1) {
+				listItemView.setBackgroundColor(Color.WHITE);
+			} else {
+				listItemView.setBackgroundColor(Color.rgb(200,200,200));
+			}
+			*/
+			return listItemView;
+			
+		}
 	}
 
 	/**

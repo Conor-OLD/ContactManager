@@ -196,5 +196,9 @@ public class ContactDatabase {
 	public int getANewID() {
 		return totalContacts;
 	}
+
+	public List<Contact> getContactList() {
+		return contactList;
+	}
 	
 }
