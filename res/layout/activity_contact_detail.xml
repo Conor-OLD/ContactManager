@@ -50,20 +50,20 @@
     <TextView
         android:id="@+id/textViewMiddleNameField"
         android:layout_marginTop="125dp"
-        android:text="@string/first_name"
+        android:text="@string/middle_name"
         
 		style="@style/ContactFieldNameStyle" />
 
     <TextView
         android:id="@+id/textViewMiddleNameData"
         android:layout_marginTop="145dp"
-        android:text="@string/first_name"
+        android:text="@string/middle_name"
         
         style="@style/ContactFieldDataStyle" />
     
     <Button
         android:id="@+id/MiddleNameEdit"
-        android:layout_alignTop="@+id/textViewLastNameField"
+        android:layout_alignTop="@+id/textViewMiddleNameField"
         android:text="@string/edit_button" 
         
         style="@style/ContactFieldEditButtonStyle"/>
@@ -75,20 +75,20 @@
     <TextView
         android:id="@+id/textViewLastNameField"
         android:layout_marginTop="170dp"
-        android:text="@string/first_name"
+        android:text="@string/last_name"
         
 		style="@style/ContactFieldNameStyle" />
 
     <TextView
         android:id="@+id/textViewLastNameData"
         android:layout_marginTop="190dp"
-        android:text="@string/first_name"
+        android:text="@string/last_name"
         
         style="@style/ContactFieldDataStyle" />
     
     <Button
         android:id="@+id/LastNameEdit"        
-        android:layout_alignTop="@+id/textViewMiddleNameField"
+        android:layout_alignTop="@+id/textViewLastNameField"
         android:text="@string/edit_button" 
         
         style="@style/ContactFieldEditButtonStyle"/>
@@ -97,26 +97,133 @@
     
     
     
+    
     <TextView
         android:id="@+id/textViewMobilePhoneField"
-        android:layout_marginTop="365dp"
-        android:text="@string/first_name"
+        android:layout_marginTop="215dp"
+        android:text="@string/mobile_phone"
         
 		style="@style/ContactFieldNameStyle" />
 
     <TextView
         android:id="@+id/textViewMobilePhoneData"
-        android:layout_marginTop="385dp"
-        android:text="@string/first_name"
+        android:layout_marginTop="235dp"
+        android:text="@string/mobile_phone"
+        
+        style="@style/ContactFieldDataStyle" />
+    
+    <Button
+        android:id="@+id/MobilePhoneEdit"        
+        android:layout_alignTop="@+id/textViewMobilePhoneField"
+        android:text="@string/edit_button" 
+        
+        style="@style/ContactFieldEditButtonStyle"/>
+    
+    
+    
+    
+    
+    
+    <TextView
+        android:id="@+id/textViewHomePhoneField"
+        android:layout_marginTop="260dp"
+        android:text="@string/home_phone"
+        
+		style="@style/ContactFieldNameStyle" />
+
+    <TextView
+        android:id="@+id/textViewHomePhoneData"
+        android:layout_marginTop="280dp"
+        android:text="@string/home_phone"
+        
+        style="@style/ContactFieldDataStyle" />
+    
+    <Button
+        android:id="@+id/HomePhoneEdit"        
+        android:layout_alignTop="@+id/textViewHomePhoneField"
+        android:text="@string/edit_button" 
+        
+        style="@style/ContactFieldEditButtonStyle"/>
+ 
+    
+    
+    
+    
+    <TextView
+        android:id="@+id/textViewWorkPhoneField"
+        android:layout_marginTop="305dp"
+        android:text="@string/work_phone"
+        
+		style="@style/ContactFieldNameStyle" />
+
+    <TextView
+        android:id="@+id/textViewWorkPhoneData"
+        android:layout_marginTop="325dp"
+        android:text="@string/work_phone"
+        
+        style="@style/ContactFieldDataStyle" />
+    
+    <Button
+        android:id="@+id/WorkPhoneEdit"        
+        android:layout_alignTop="@+id/textViewWorkPhoneField"
+        android:text="@string/edit_button" 
+        
+        style="@style/ContactFieldEditButtonStyle"/>
+    
+       
+    
+    
+    
+    
+    
+    <TextView
+        android:id="@+id/textViewEmailAddressField"
+        android:layout_marginTop="350dp"
+        android:text="@string/email_address"
+        
+		style="@style/ContactFieldNameStyle" />
+
+    <TextView
+        android:id="@+id/textViewEmailAddressData"
+        android:layout_marginTop="370dp"
+        android:text="@string/email_address"
+        
+        style="@style/ContactFieldDataStyle" />
+    
+    <Button
+        android:id="@+id/EmailAddressEdit"        
+        android:layout_alignTop="@+id/textViewEmailAddressField"
+        android:text="@string/edit_button" 
+        
+        style="@style/ContactFieldEditButtonStyle"/>
+    
+    
+    
+    
+    
+    
+    <TextView
+        android:id="@+id/textViewHomeAddressField"
+        android:layout_marginTop="395dp"
+        android:text="@string/home_address"
+        
+		style="@style/ContactFieldNameStyle" />
+
+    <TextView
+        android:id="@+id/textViewHomeAddressData"
+        android:layout_marginTop="415dp"
+        android:text="@string/home_address"
         
         style="@style/ContactFieldDataStyle" />
 
     <Button
-        android:id="@+id/MobilePhoneEdit"
-        android:layout_alignTop="@+id/textViewMobilePhoneField"
+        android:id="@+id/HomeAddressEdit"
+        android:layout_alignTop="@+id/textViewHomeAddressField"
         android:text="@string/edit_button" 
         
         style="@style/ContactFieldEditButtonStyle" />
+    
+    
 
     
 

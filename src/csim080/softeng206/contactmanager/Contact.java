@@ -89,5 +89,22 @@ public class Contact {
 	public String getMobile() {
 		return mobileNumber;
 	}
+	
+	public String getHomePhone() {
+		return homeNumber;
+	}
+		
+	public String getWorkPhone() {
+		return workNumber;
+	}
+	
+	public String getEmail() {
+		return emailAddress;
+	}
+	
+	public String getHomeAddress() {
+		return homeAddress;
+	}
+	
 
 }

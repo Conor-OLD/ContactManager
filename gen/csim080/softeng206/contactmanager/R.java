@@ -24,15 +24,19 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int ButtonAddNew=0x7f080024;
-        public static final int ButtonContList=0x7f080025;
-        public static final int ButtonHelp=0x7f080027;
-        public static final int ButtonSettings=0x7f080026;
+        public static final int ButtonAddNew=0x7f080030;
+        public static final int ButtonContList=0x7f080031;
+        public static final int ButtonHelp=0x7f080033;
+        public static final int ButtonSettings=0x7f080032;
+        public static final int EmailAddressEdit=0x7f080025;
         public static final int FirstNameEdit=0x7f080013;
+        public static final int HomeAddressEdit=0x7f080028;
+        public static final int HomePhoneEdit=0x7f08001f;
         public static final int LastNameEdit=0x7f080019;
         public static final int MiddleNameEdit=0x7f080016;
         public static final int MobilePhoneEdit=0x7f08001c;
-        public static final int action_settings=0x7f080028;
+        public static final int WorkPhoneEdit=0x7f080022;
+        public static final int action_settings=0x7f080034;
         public static final int button_back_add1=0x7f080004;
         public static final int button_back_add2=0x7f08000b;
         public static final int button_next_add1=0x7f080003;
@@ -46,24 +50,32 @@ public final class R {
         public static final int home_phone=0x7f080006;
         public static final int imageView1=0x7f080010;
         public static final int last_name=0x7f080002;
-        public static final int list_item_text_first_name=0x7f080021;
-        public static final int list_item_text_last_name=0x7f080022;
-        public static final int list_item_text_mobile_number=0x7f080023;
-        public static final int list_view=0x7f08001d;
+        public static final int list_item_text_first_name=0x7f08002d;
+        public static final int list_item_text_last_name=0x7f08002e;
+        public static final int list_item_text_mobile_number=0x7f08002f;
+        public static final int list_view=0x7f080029;
         public static final int middle_name=0x7f080001;
         public static final int mobile_phone=0x7f080005;
-        public static final int return_menu=0x7f080020;
-        public static final int sort_firstname=0x7f08001e;
-        public static final int sort_lastname=0x7f08001f;
+        public static final int return_menu=0x7f08002c;
+        public static final int sort_firstname=0x7f08002a;
+        public static final int sort_lastname=0x7f08002b;
         public static final int textView1=0x7f08000c;
+        public static final int textViewEmailAddressData=0x7f080024;
+        public static final int textViewEmailAddressField=0x7f080023;
         public static final int textViewFirstNameData=0x7f080012;
         public static final int textViewFirstNameField=0x7f080011;
+        public static final int textViewHomeAddressData=0x7f080027;
+        public static final int textViewHomeAddressField=0x7f080026;
+        public static final int textViewHomePhoneData=0x7f08001e;
+        public static final int textViewHomePhoneField=0x7f08001d;
         public static final int textViewLastNameData=0x7f080018;
         public static final int textViewLastNameField=0x7f080017;
         public static final int textViewMiddleNameData=0x7f080015;
         public static final int textViewMiddleNameField=0x7f080014;
         public static final int textViewMobilePhoneData=0x7f08001b;
         public static final int textViewMobilePhoneField=0x7f08001a;
+        public static final int textViewWorkPhoneData=0x7f080021;
+        public static final int textViewWorkPhoneField=0x7f080020;
         public static final int work_phone=0x7f080007;
     }
     public static final class layout {

@@ -30,8 +30,29 @@ public class ContactDetail extends Activity {
 		TextView homeAd;
 		TextView email;
 		
-		first = (TextView) findViewById(R.id.textViewLastNameData);
-		first.setText(contact.toString());
+		first = (TextView) findViewById(R.id.textViewFirstNameData);
+		first.setText(contact.getFirstName());
+		
+		middle = (TextView) findViewById(R.id.textViewMiddleNameData);
+		middle.setText(contact.getMiddleName());
+		
+		last = (TextView) findViewById(R.id.textViewLastNameData);
+		last.setText(contact.getLastName());
+		
+		mobile = (TextView) findViewById(R.id.textViewMobilePhoneData);
+		mobile.setText(contact.getMobile());
+		
+		home = (TextView) findViewById(R.id.textViewHomePhoneData);
+		home.setText(contact.getHomePhone());
+		
+		work = (TextView) findViewById(R.id.textViewWorkPhoneData);
+		work.setText(contact.getWorkPhone());
+		
+		homeAd = (TextView) findViewById(R.id.textViewEmailAddressData);
+		homeAd.setText(contact.getEmail());
+		
+		email = (TextView) findViewById(R.id.textViewHomeAddressData);
+		email.setText(contact.getHomeAddress());
 		
 		
 	}
