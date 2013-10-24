@@ -140,9 +140,15 @@ public class ListActivity extends Activity {
 		
 		@Override
 		public void onItemClick(AdapterView<?> parentView, View clickedView, int clickedViewPosition, long id) {
-			// TODO Auto-generated method stub
-			String displayText = "You clicked item" + Integer.toString(clickedViewPosition);
-			Toast.makeText(clickedView.getContext(), displayText, Toast.LENGTH_LONG).show();
+			
+			// String displayText = "You clicked item" + Integer.toString(clickedViewPosition);
+			//Toast.makeText(clickedView.getContext(), displayText, Toast.LENGTH_LONG).show(); // DEBUG LINE
+			
+			Intent intent = new Intent();
+			intent.setClass(ListActivity.this, ContactDetail.class);
+			
+			// Update the input holder object and pass it on
+			startActivity(intent);
 		}
 	}
 	
