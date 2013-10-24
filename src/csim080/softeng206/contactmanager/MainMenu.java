@@ -17,7 +17,7 @@ public class MainMenu extends Activity {
 	private Button buttonViewContacts;
 	private Button buttonAddContact;
 	private Button buttonSettingsMenu;
-	private Button buttonHelpMenu;
+	private Button buttonAbout;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +82,28 @@ public class MainMenu extends Activity {
 				// Intent object as the ContactListActivity class
 				Intent intent = new Intent();
 				intent.setClass(MainMenu.this, SettingsActivity.class);
+				
+				startActivity(intent);
+				
+			}
+		});
+		
+		
+		
+		// Instantiate the 'about' button
+		buttonAbout = (Button)findViewById(R.id.ButtonHelp);
+		
+		// Set up the listener for the button (anonymous class for simplicity)
+		buttonAbout.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+
+				// Decide the action to be performed upon click (i.e. start
+				// the appropriate activity by setting the class of the new 
+				// Intent object as the ContactListActivity class
+				Intent intent = new Intent();
+				intent.setClass(MainMenu.this, AboutActivity.class);
 				
 				startActivity(intent);
 				

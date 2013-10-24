@@ -29,6 +29,9 @@ public class AddNewContact1 extends Activity {
 	private EditText txtBoxMiddle = null;
 	private EditText txtBoxLast = null;
 	
+	// Variable that stores capitalization value
+	private int capital;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -42,6 +45,8 @@ public class AddNewContact1 extends Activity {
 		// Show the Up button in the action bar.
 		setupActionBar();
 		
+		// Get capitalization setting status
+		capital = SettingsManager.loadSettings(getApplicationContext());
 		
 		backButton = (Button)findViewById(R.id.button_back_add1);				
 		// Set up the listener for the button (anonymous class for simplicity)
@@ -67,9 +72,19 @@ public class AddNewContact1 extends Activity {
 				txtBoxMiddle = (EditText) findViewById(R.id.middle_name);
 				txtBoxLast = (EditText) findViewById(R.id.last_name);
 				
-				String first = txtBoxFirst.getText().toString();
-				String middle = txtBoxMiddle.getText().toString();
-				String last = txtBoxLast.getText().toString();
+				String first;
+				String middle;
+				String last;
+				
+				if (capital == 1) {
+					first = Capitalize.capitalize(txtBoxFirst.getText().toString());
+					middle = Capitalize.capitalize(txtBoxMiddle.getText().toString());
+					last = Capitalize.capitalize(txtBoxLast.getText().toString());
+				} else {
+					first = txtBoxFirst.getText().toString();
+					middle = txtBoxMiddle.getText().toString();
+					last = txtBoxLast.getText().toString();
+				}
 				
 				//Toast.makeText(v.getContext(), "First name: " + first, Toast.LENGTH_LONG).show(); // DEBUG line
 				

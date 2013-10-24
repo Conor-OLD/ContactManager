@@ -70,6 +70,14 @@
             android:name="csim080.softeng206.contactmanager.ContactDetail"
             android:label="@string/title_activity_contact_detail" >
         </activity>
+        <activity
+            android:name="csim080.softeng206.contactmanager.MainActivity"
+            android:label="@string/title_activity_main" >
+        </activity>
+        <activity
+            android:name="csim080.softeng206.contactmanager.AboutActivity"
+            android:label="@string/title_activity_about" >
+        </activity>
     </application>
 
 </manifest>

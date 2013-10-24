@@ -7,7 +7,7 @@
     <string name="action_settings">Settings</string>
     <string name="new_cont">Add New Contact</string>
     <string name="view_list">View Contact List</string>
-    <string name="help_info">Help &amp; App Info</string>
+    <string name="help_info">About</string>
     <string name="next">Next</string>
     <string name="title_activity_add_new_contact1">Enter the contact\'s name</string>
     <string name="hello_world">Hello world!</string>
@@ -36,5 +36,7 @@
     <string name="edit_button">Edit</string>
     <string name="delete">Delete Contact</string>
     <string name="toggle_capital">Toggle Auto-capitalisation</string>
+    <string name="title_activity_main">AboutActivity</string>
+    <string name="title_activity_about">AboutActivity</string>
 
 </resources>
