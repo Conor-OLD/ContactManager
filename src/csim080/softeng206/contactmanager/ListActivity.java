@@ -49,7 +49,7 @@ public class ListActivity extends Activity {
 		// the appropriate file directory in the Android device's internal storage
 		// that it then uses to populate its own 'ContactList' List object, which
 		// contains 'Contact' objects
-		cd = ContactDatabase.getInstance((listView.getContext()));
+		cd = ContactDatabase.getInstanceWithoutCreating();
 		
 		sortFirstButton = (Button)findViewById(R.id.sort_firstname);
 		sortLastButton = (Button)findViewById(R.id.sort_lastname);
@@ -180,6 +180,8 @@ public class ListActivity extends Activity {
 	
 	protected void onResume() {
 		super.onResume();
+		// Re-synchronize the file system with the object in memory
+		// (i.e. destroy and reinitialize the ContactDatabase)
 		listView.invalidateViews();
 		//Toast.makeText(listView.getContext(), "test", Toast.LENGTH_LONG).show(); // DEBUG LINE
 	}

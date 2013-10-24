@@ -23,6 +23,7 @@ public class MainMenu extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_menu);
+		ContactDatabase.getInstance(getApplicationContext());
 		
 		// Instantiate the contact list button and create a reference to the button in
 		// the layout (and cast to Button type)
@@ -76,6 +77,18 @@ public class MainMenu extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main_menu, menu);
 		return true;
+	}
+	
+	
+	// This needs to be called so that the file system is also updated when
+	// the list manager returns to the menu
+	protected void onResume() {
+		super.onResume();
+		// Re-synchronize the file system with the object in memory
+		// (i.e. destroy the ContactDatabase)
+		ContactDatabase.destroyInstance();
+		ContactDatabase.getInstance(getApplicationContext());
+		//Toast.makeText(listView.getContext(), "test", Toast.LENGTH_LONG).show(); // DEBUG LINE
 	}
 
 }

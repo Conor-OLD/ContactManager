@@ -74,24 +74,30 @@ public class ContactDetail extends Activity {
 		email.setText(contact.getHomeAddress());
 		
 		backButton = (Button) findViewById(R.id.ContactDetailBack);
-		editFirstButton.setOnClickListener(new View.OnClickListener() {
+		backButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				finish();
 			}
 		});
 		
+		// Listeners for all edit buttons
+		
 		editFirstButton = (Button)findViewById(R.id.FirstNameEdit);
 		editFirstButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//Toast.makeText(v.getContext(), "Toast debug", Toast.LENGTH_LONG).show(); // DEBUG line
-				
 				// Call editFunction with the appropriate field integer and string
-				editFunction(v, 1, "first name");
-				
-			}
-			
+				editFunction(v, 1, "first name");				
+			}			
+		});
+		
+		editMiddleButton = (Button)findViewById(R.id.MiddleNameEdit);
+		editMiddleButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				editFunction(v, 2, "middle name");				
+			}			
 		});
 	}
 	
@@ -126,7 +132,11 @@ public class ContactDetail extends Activity {
             	if (field == 1) {
             		contact.setFirstName(inputValue);
             		first.setText(inputValue);
+            	} else if (field == 2) {
+            		contact.setMiddleName(inputValue);
+            		middle.setText(inputValue);
             	}
+            	
             	
             	// It returns to main menu (and clears the stack, thus
             	// emptying it of the AddContact activity sequence)
@@ -140,6 +150,8 @@ public class ContactDetail extends Activity {
 				//intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				//intent.putExtra("EXIT", true);
 				//startActivity(intent);
+            	
+            	ContactDatabase.saveState();
             	
 			}
             
