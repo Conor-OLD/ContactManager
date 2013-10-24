@@ -7,30 +7,67 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ContactDetail" >
-
+    
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textViewPageContactDetailTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="8px"
         android:text="@string/contact_detail_header"
-        android:textSize="9pt" />
+        android:textSize="24sp" />
+    
+    
+    
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:textSize="7pt"
+        android:id="@+id/textViewFirstNameField"
+        android:layout_marginTop="50dp"
+        android:text="@string/first_name"
+        
+		style="@style/ContactFieldNameStyle" />
+    
+    <TextView
+        android:id="@+id/textViewFirstNameData"
+        android:layout_marginTop="70dp"
+        android:text="@string/first_name"
+        
+        style="@style/ContactFieldDataStyle" />
+    
+     <Button
+        android:id="@+id/FirstNameEdit"
+		android:layout_alignTop="@+id/textViewFirstNameField"
+        android:text="@string/edit_button"
+        
+        style="@style/ContactFieldEditButtonStyle" />
+     
+     
+     
+     
+    
+    <TextView
+        android:id="@+id/textViewMiddleNameField"
+        android:layout_marginTop="90dp"
+        android:text="@string/first_name"
+        
+		style="@style/ContactFieldNameStyle" />
+
+    <TextView
+        android:id="@+id/textViewMiddleNameData"
+        android:layout_marginTop="110dp"
+        android:text="@string/first_name"
+        
+        style="@style/ContactFieldDataStyle" />
+    
+    <Button
+        android:id="@+id/MiddleNameEdit"
         android:layout_marginTop="40dp"
-        android:text="@string/contact_detail_header" />
+        android:layout_alignTop="@+id/textViewFirstNameField"
+        android:text="@string/edit_button"
+        
+        style="@style/ContactFieldEditButtonStyle" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:textSize="7pt"
-        android:layout_marginTop="60dp"
-        android:text="@string/contact_detail_header" />
+    
 
 </RelativeLayout>

@@ -10,11 +10,8 @@ public class ContactDetail extends Activity {
 	
 	// Override the onCreate class so that the activity can receive a contact
 	// as an argument from the ListActivity screen
-	protected void onCreate(Bundle savedInstanceState, Contact c) {
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		// Set the class' contact field according to the contact argument passed to it
-		contact = c;
 		
 		setContentView(R.layout.activity_contact_detail);
 	}

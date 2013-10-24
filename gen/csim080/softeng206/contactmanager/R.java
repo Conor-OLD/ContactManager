@@ -24,11 +24,13 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int ButtonAddNew=0x7f080017;
-        public static final int ButtonContList=0x7f080018;
-        public static final int ButtonHelp=0x7f08001a;
-        public static final int ButtonSettings=0x7f080019;
-        public static final int action_settings=0x7f08001b;
+        public static final int ButtonAddNew=0x7f08001e;
+        public static final int ButtonContList=0x7f08001f;
+        public static final int ButtonHelp=0x7f080021;
+        public static final int ButtonSettings=0x7f080020;
+        public static final int FirstNameEdit=0x7f080012;
+        public static final int MiddleNameEdit=0x7f080015;
+        public static final int action_settings=0x7f080022;
         public static final int button_back_add1=0x7f080004;
         public static final int button_back_add2=0x7f08000b;
         public static final int button_next_add1=0x7f080003;
@@ -41,16 +43,21 @@ public final class R {
         public static final int home_address=0x7f080009;
         public static final int home_phone=0x7f080006;
         public static final int last_name=0x7f080002;
-        public static final int list_item_text_first_name=0x7f080014;
-        public static final int list_item_text_last_name=0x7f080015;
-        public static final int list_item_text_mobile_number=0x7f080016;
-        public static final int list_view=0x7f080010;
+        public static final int list_item_text_first_name=0x7f08001b;
+        public static final int list_item_text_last_name=0x7f08001c;
+        public static final int list_item_text_mobile_number=0x7f08001d;
+        public static final int list_view=0x7f080017;
         public static final int middle_name=0x7f080001;
         public static final int mobile_phone=0x7f080005;
-        public static final int return_menu=0x7f080013;
-        public static final int sort_firstname=0x7f080011;
-        public static final int sort_lastname=0x7f080012;
+        public static final int return_menu=0x7f08001a;
+        public static final int sort_firstname=0x7f080018;
+        public static final int sort_lastname=0x7f080019;
         public static final int textView1=0x7f08000c;
+        public static final int textViewFirstNameData=0x7f080011;
+        public static final int textViewFirstNameField=0x7f080010;
+        public static final int textViewMiddleNameData=0x7f080014;
+        public static final int textViewMiddleNameField=0x7f080013;
+        public static final int textViewPageContactDetailTitle=0x7f080016;
         public static final int work_phone=0x7f080007;
     }
     public static final class layout {
@@ -77,6 +84,7 @@ public final class R {
         public static final int app_name=0x7f050000;
         public static final int back=0x7f05000d;
         public static final int contact_detail_header=0x7f05001f;
+        public static final int edit_button=0x7f050020;
         public static final int email_address=0x7f050012;
         public static final int first_name=0x7f05000a;
         public static final int hello_world=0x7f050009;
@@ -135,10 +143,19 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f060001;
+        /**   Text style for field data - Contact detail 
+         */
+        public static final int ContactFieldDataStyle=0x7f060005;
+        /**   Button style for edit button - Contact detail 
+         */
+        public static final int ContactFieldEditButtonStyle=0x7f060006;
+        /**   Text style for field names - Contact detail 
+         */
+        public static final int ContactFieldNameStyle=0x7f060004;
         /**   Button style for contact list 
          */
         public static final int ListButtonStyle=0x7f060003;
-        public static final int LoginFormContainer=0x7f060004;
+        public static final int LoginFormContainer=0x7f060007;
         /**  Button style for main menu 
          */
         public static final int MenuButtonStyle=0x7f060002;
