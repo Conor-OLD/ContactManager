@@ -61,9 +61,13 @@ public class ListActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
+				/* Old implementation, bad because it keeps activity on the stack.
+				 * 
 				Intent intent = new Intent();				
 				intent.setClass(ListActivity.this, MainMenu.class);				
 				startActivity(intent);	
+				*/
+				finish();
 			}
 		});
 		
@@ -154,9 +158,6 @@ public class ListActivity extends Activity {
 			startActivity(intent);
 		}
 	}
-	
-	
-	
 	
 	
 	/**
