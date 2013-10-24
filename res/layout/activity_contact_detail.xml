@@ -224,6 +224,26 @@
         style="@style/ContactFieldEditButtonStyle" />
     
     
+    
+    
+    
+    <Button
+        android:id="@+id/ContactDetailBack"
+        android:layout_width="145dp"
+        android:layout_height="60dp"        
+        android:layout_marginTop="440dp"
+        android:text="@string/back" />
+    
+    <Button
+        android:id="@+id/ContactDetailDelete"
+        android:layout_width="145dp"
+        android:layout_height="60dp"        
+        android:layout_marginTop="440dp"
+        android:layout_alignParentRight="true"
+        android:textColor="#FF2233"
+        android:text="@string/delete" />
+    
+    
 
     
 
