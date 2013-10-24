@@ -66,6 +66,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="csim080.softeng206.contactmanager.MainMenu" />
         </activity>
+        <activity
+            android:name="csim080.softeng206.contactmanager.ContactDetail"
+            android:label="@string/title_activity_contact_detail" >
+        </activity>
     </application>
 
 </manifest>

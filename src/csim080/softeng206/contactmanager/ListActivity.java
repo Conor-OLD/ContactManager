@@ -13,11 +13,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.support.v4.app.NavUtils;
 
 public class ListActivity extends Activity {
@@ -53,8 +55,9 @@ public class ListActivity extends Activity {
 		sortLastButton = (Button)findViewById(R.id.sort_lastname);
 		toMenuButton = (Button)findViewById(R.id.return_menu);
 		
+		listView.setOnItemClickListener(new ListItemClickedListener());
+		
 		toMenuButton.setOnClickListener(new View.OnClickListener() {
-			
 			
 			@Override
 			public void onClick(View v) {
@@ -131,7 +134,22 @@ public class ListActivity extends Activity {
 			
 		}
 	}
-
+	
+	// Listener class for items in the list
+	class ListItemClickedListener implements AdapterView.OnItemClickListener {
+		
+		@Override
+		public void onItemClick(AdapterView<?> parentView, View clickedView, int clickedViewPosition, long id) {
+			// TODO Auto-generated method stub
+			String displayText = "You clicked item" + Integer.toString(clickedViewPosition);
+			Toast.makeText(clickedView.getContext(), displayText, Toast.LENGTH_LONG).show();
+		}
+	}
+	
+	
+	
+	
+	
 	/**
 	 * Set up the {@link android.app.ActionBar}.
 	 */
