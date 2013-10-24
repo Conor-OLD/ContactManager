@@ -73,6 +73,39 @@ public class Contact {
 	public void setPid(int p) {
 		this.pid = p;		
 	}
+	
+	// Setter/getter methods for contact attributes
+	public void setFirstName(String arg) {
+		firstName = arg;
+	}
+	
+	public void setMiddleName(String arg) {
+		middleName = arg;
+	}
+	
+	public void setLastName(String arg) {
+		lastName = arg;
+	}
+	
+	public void setMobile(String arg) {
+		mobileNumber = arg;
+	}
+	
+	public void setHomePhone(String arg) {
+		homeNumber = arg;
+	}
+		
+	public void setWorkPhone(String arg) {
+		workNumber = arg;
+	}
+	
+	public void setEmail(String arg) {
+		emailAddress = arg;
+	}
+	
+	public void setHomeAddress(String arg) {
+		homeAddress = arg;
+	}
 
 	public String getFirstName() {
 		return firstName;

@@ -14,16 +14,21 @@ import android.view.View;
 import android.widget.Toast;
 
 public class ContactDatabase {
-	// Stub class consisting of a list of contacts and stub methods,
-	// acts as a database of contacts that can be accessed and modified
-	// using said functions
+	// A singleton class that acts as a temporary database in memory that 
+	// maintains a 'clean' copy of the contact database while it is in use
+	// by the program; it is capable of performing methods that affect the
+	// contacts in the database and the database as a whole and the class
+	// is wholly responsible for reading and writing back to memory.
 
+	private static ContactDatabase instance = null;
+	
 	private List<Contact> contactList;
 	private int totalContacts; // This is a variable that will be used to
 	// determine IDs for contacts as they are added;
 	private Context context;
-		
-	public ContactDatabase (Context co) {
+	
+	// Private constructor due to singleton pattern
+	private ContactDatabase (Context co) {
 		// Set the database's android context
 		context = co;
 		
@@ -34,6 +39,33 @@ public class ContactDatabase {
 		this.populateList();
 		
 	}
+	
+	// Implement singleton instance-returning method
+	public static ContactDatabase getInstance(Context c) {
+		if (instance == null ) {
+			instance = new ContactDatabase(c);
+		}
+		return instance;
+	}
+	
+	// Implement singleton instance-returning method (no creation, does not require
+	// a context object)
+	public static ContactDatabase getInstanceWithoutCreating() {
+		return instance;
+	}
+	
+	// This destroys the instance when it isn't needed, but calls the
+	// 'finishOperations()' method first, which ensures that the filesystem
+	// is synchronized with the state of the object before destruction.
+	public static void destroyInstance() {
+		instance.finishOperations();
+		instance = null;
+	}
+	
+	
+	
+	
+	
 	
 	// Function that reads the list of contacts from memory
 	public void populateList() {
@@ -127,7 +159,7 @@ public class ContactDatabase {
 	
 	// Method that is called as the object is destroyed; it writes the
 	// contact database (including the ID value) to file.
-	public void finishOperations() {
+	private void finishOperations() {
 		// Overwrite the datafile in memory with the up-to-date data
 		try {
 			FileOutputStream outputStream;

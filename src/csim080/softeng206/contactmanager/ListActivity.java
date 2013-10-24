@@ -49,7 +49,7 @@ public class ListActivity extends Activity {
 		// the appropriate file directory in the Android device's internal storage
 		// that it then uses to populate its own 'ContactList' List object, which
 		// contains 'Contact' objects
-		cd = new ContactDatabase(listView.getContext());
+		cd = ContactDatabase.getInstance((listView.getContext()));
 		
 		sortFirstButton = (Button)findViewById(R.id.sort_firstname);
 		sortLastButton = (Button)findViewById(R.id.sort_lastname);
@@ -78,22 +78,7 @@ public class ListActivity extends Activity {
 	// This function holds all the responsibility for setting up
 	// the list viewer for the Contact list activity
 	
-	private void setupListView() {		
-		// Test-only implementation
-		
-		/*
-		List<String> displayList = new ArrayList<String>();
-		displayList.add("John Smith");
-		displayList.add("Mary Smith");
-		displayList.add("Doug McDonald");
-		displayList.add("Mark Andrews");
-		displayList.add("Nicola Andrews");
-		displayList.add("Jakob Henry");
-		
-		ListAdapter listAdapter = new ArrayAdapter<String>(
-				ListActivity.this, android.R.layout.simple_list_item_1, displayList);
-		listView.setAdapter(listAdapter);
-		*/
+	private void setupListView() {	
 		
 		ListAdapter listAdapter = new ContactListAdapter(ListActivity.this, cd.getContactList());
 		listView.setAdapter(listAdapter);
@@ -191,6 +176,12 @@ public class ListActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	protected void onResume() {
+		super.onResume();
+		listView.invalidateViews();
+		//Toast.makeText(listView.getContext(), "test", Toast.LENGTH_LONG).show(); // DEBUG LINE
 	}
 
 }

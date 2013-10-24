@@ -45,12 +45,12 @@ public class AddNewContactPhoto extends Activity {
 				
 				// Instantiate a contactDatabase object; this will be used to update
 				// the contact database in memory
-				ContactDatabase cd = new ContactDatabase(v.getContext());
+				ContactDatabase cd = ContactDatabase.getInstance(v.getContext());
 				// Set the ID of the new contact, using the current number of
 				// total contacts in the database
 				contact.setPid(cd.getANewID());
 				cd.addContact(contact);
-				cd.finishOperations();
+				ContactDatabase.destroyInstance();
 				
 				ad.setMessage(contact + " was added to your contacts.");
 				ad.setButton(DialogInterface.BUTTON_NEUTRAL, "Ok", new DialogInterface.OnClickListener() {
