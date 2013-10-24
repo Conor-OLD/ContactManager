@@ -67,12 +67,12 @@ public class ContactDetail extends Activity {
 		work = (TextView) findViewById(R.id.textViewWorkPhoneData);
 		work.setText(contact.getWorkPhone());
 		
-		homeAd = (TextView) findViewById(R.id.textViewEmailAddressData);
-		homeAd.setText(contact.getEmail());
+		email = (TextView) findViewById(R.id.textViewEmailAddressData);
+		email.setText(contact.getEmail());
 		
-		email = (TextView) findViewById(R.id.textViewHomeAddressData);
-		email.setText(contact.getHomeAddress());
-		
+		homeAd = (TextView) findViewById(R.id.textViewHomeAddressData);
+		homeAd.setText(contact.getHomeAddress());
+				
 		backButton = (Button) findViewById(R.id.ContactDetailBack);
 		backButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -99,6 +99,79 @@ public class ContactDetail extends Activity {
 				editFunction(v, 2, "middle name");				
 			}			
 		});
+		
+		editLastButton = (Button)findViewById(R.id.LastNameEdit);
+		editLastButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				editFunction(v, 3, "last name");				
+			}			
+		});
+		
+				
+		editMobileButton = (Button)findViewById(R.id.MobilePhoneEdit);
+		editMobileButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				editFunction(v, 4, "mobile number");				
+			}			
+		});
+		
+		editHomePhoneButton = (Button)findViewById(R.id.HomePhoneEdit);
+		editHomePhoneButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				editFunction(v, 5, "home number");				
+			}			
+		});
+		
+		editWorkPhoneButton = (Button)findViewById(R.id.WorkPhoneEdit);
+		editWorkPhoneButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				editFunction(v, 6, "work number");				
+			}			
+		});
+		
+		editEmailAddressButton = (Button)findViewById(R.id.EmailAddressEdit);
+		editEmailAddressButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				editFunction(v, 7, "email address");				
+			}			
+		});
+		
+		editHomeAddressButton = (Button)findViewById(R.id.HomeAddressEdit);
+		editHomeAddressButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				editFunction(v, 8, "home address");				
+			}			
+		});
+		
+		
+		deleteButton = (Button)findViewById(R.id.ContactDetailDelete);
+		deleteButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				ContactDatabase.getInstance(getApplicationContext()).delete((Integer)contact.getID());
+				// Refresh the Contact database
+				ContactDatabase.getInstance(getApplicationContext());
+				
+				// Return to main menu (and clears the stack, thus
+            	// emptying it of the AddContact activity sequence)
+				Intent intent = new Intent(getApplicationContext(), MainMenu.class);
+				
+				// Setting this flag upon a successful contact delete
+				// will ensure that all activities (i.e., the ones that were opened during the 
+				// addContact stage) will be removed from the stack
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				intent.putExtra("EXIT", true);
+				startActivity(intent);
+			}
+		});
+		
 	}
 	
 	
@@ -135,24 +208,31 @@ public class ContactDetail extends Activity {
             	} else if (field == 2) {
             		contact.setMiddleName(inputValue);
             		middle.setText(inputValue);
-            	}
-            	
-            	
-            	// It returns to main menu (and clears the stack, thus
-            	// emptying it of the AddContact activity sequence)
-				//Intent intent = new Intent(getApplicationContext(), MainMenu.class);
-            	
+            	} else if (field == 3) {
+            		contact.setLastName(inputValue);
+            		last.setText(inputValue);
+            	} else if (field == 4) {
+            		contact.setMobile(inputValue);
+            		mobile.setText(inputValue);
+            	} else if (field == 5) {
+            		contact.setHomePhone(inputValue);
+            		home.setText(inputValue);
+            	} else if (field == 6) {
+            		contact.setWorkPhone(inputValue);
+            		work.setText(inputValue);
+            	} else if (field == 7) {
+            		contact.setEmail(inputValue);
+            		email.setText(inputValue);
+            	} else if (field == 8) {
+            		contact.setHomeAddress(inputValue);
+            		homeAd.setText(inputValue);
+            	} 
             	//Toast.makeText(vi.getContext(), inputValue, Toast.LENGTH_LONG).show(); // DEBUG line
-				
-            	// Setting this flag upon a successful series of AddContact activities
-				// will ensure that all activities (i.e., the ones that were opened during the 
-				// addContact stage) will be removed from the stack
-				//intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				//intent.putExtra("EXIT", true);
-				//startActivity(intent);
-            	
+
+            	// Refresh the contact database in the filesystem so that it is made 
+            	// up-to-date whenever a change is made, without having to wait for 
+            	// user to close activities.
             	ContactDatabase.saveState();
-            	
 			}
             
 		});

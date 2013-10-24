@@ -138,6 +138,10 @@ public class Contact {
 	public String getHomeAddress() {
 		return homeAddress;
 	}
+
+	public int getID() {
+		return pid;
+	}
 	
 
 }

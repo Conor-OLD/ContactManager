@@ -44,6 +44,9 @@ public class ContactDatabase {
 	public static ContactDatabase getInstance(Context c) {
 		if (instance == null ) {
 			instance = new ContactDatabase(c);
+		} else {
+			ContactDatabase.destroyInstance();
+			instance = new ContactDatabase(c);
 		}
 		return instance;
 	}
@@ -120,7 +123,7 @@ public class ContactDatabase {
 				contact.setPid(pid);
 				contactList.add(contact);
 				
-				System.out.println("End of contact = " + homeAd);
+				//System.out.println("End of contact = " + homeAd); //DEBUG LINE
 			}
 			
 			
@@ -154,6 +157,12 @@ public class ContactDatabase {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public static void saveState() {
+		if (instance != null) {
+			instance.finishOperations();
 		}
 	}
 	
@@ -199,12 +208,35 @@ public class ContactDatabase {
 	
 	// Deletes a contact from the list, by ID
 	public void delete(int id) {
-		// Stub
+		// Create a temporary list of contacts, and add every
+		// contact to that list that doesn't have the same ID as
+		// the one being deleted.
+		List<Contact> tempList = new ArrayList<Contact>();
+		for (Contact c : contactList) {
+			if (c.getID() != id) {
+				tempList.add(c);
+			}
+		}
+		contactList = tempList;
 	}
 	
 	// Sort contact by first name
 	public void sortFirst() {
 		List<Contact> tempContList = new ArrayList<Contact>();
+		Contact nextInOrder;
+		//while (contactList.size() > 0) {
+		nextInOrder = new Contact("ZZZZZZZ", "", "ZZZZZZ", "", "", "", "", "");
+		for (Contact c : contactList) {
+			if (c.getFirstName().compareToIgnoreCase(nextInOrder.getFirstName()) >= 0) {
+				nextInOrder = c;
+				System.out.println(nextInOrder);
+			}
+		}
+		System.out.println(contactList.size());
+		contactList.remove(nextInOrder);
+		tempContList.add(nextInOrder);
+		//}
+		contactList = tempContList;
 	}
 	
 	public void sortLast() {

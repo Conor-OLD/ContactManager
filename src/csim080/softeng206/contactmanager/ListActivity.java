@@ -57,6 +57,20 @@ public class ListActivity extends Activity {
 		
 		listView.setOnItemClickListener(new ListItemClickedListener());
 		
+		// Call the 'sort by first name' algorithm in the contact database,
+		// then tell the list adapter that the data has changed, so the list
+		// needs to be refreshed
+		sortFirstButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				cd.sortFirst();
+				cd.saveState();
+				listView.invalidateViews();
+			}
+			
+		});
+		
 		toMenuButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -79,7 +93,7 @@ public class ListActivity extends Activity {
 	// the list viewer for the Contact list activity
 	
 	private void setupListView() {	
-		
+		cd = ContactDatabase.getInstanceWithoutCreating();
 		ListAdapter listAdapter = new ContactListAdapter(ListActivity.this, cd.getContactList());
 		listView.setAdapter(listAdapter);
 	}
@@ -178,7 +192,7 @@ public class ListActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	protected void onResume() {
+	protected void onResume() {;
 		super.onResume();
 		// Re-synchronize the file system with the object in memory
 		// (i.e. destroy and reinitialize the ContactDatabase)
