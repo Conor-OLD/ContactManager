@@ -6,7 +6,12 @@ public class Capitalize {
 	// example)
 	
     public static String capitalize(String input) {
-        return input.substring(0, 1).toUpperCase() + input.substring(1);
+    	// This must also deal with empty strings
+    	if (input.isEmpty()) {
+    		return "";
+    	} else {
+    		return input.substring(0, 1).toUpperCase() + input.substring(1);
+    	}
     }
 
    

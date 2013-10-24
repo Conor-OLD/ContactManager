@@ -64,8 +64,8 @@ public class AddNewContact2 extends Activity {
 				String mobile = txtBoxMobile.getText().toString();
 				String home = txtBoxHome.getText().toString();
 				String work = txtBoxWork.getText().toString();
-				String email = txtBoxHomeAd.getText().toString();
-				String homeAd = txtBoxEmail.getText().toString();
+				String email = txtBoxEmail.getText().toString();
+				String homeAd = txtBoxHomeAd.getText().toString();
 				
 				inputHolder.setNumbers(mobile, home, work, email, homeAd);
 				

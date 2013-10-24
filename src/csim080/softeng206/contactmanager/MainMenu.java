@@ -93,6 +93,7 @@ public class MainMenu extends Activity {
 		// Instantiate the 'about' button
 		buttonAbout = (Button)findViewById(R.id.ButtonHelp);
 		
+		
 		// Set up the listener for the button (anonymous class for simplicity)
 		buttonAbout.setOnClickListener(new View.OnClickListener() {
 			

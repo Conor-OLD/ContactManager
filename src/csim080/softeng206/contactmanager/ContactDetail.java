@@ -199,40 +199,45 @@ public class ContactDetail extends Activity {
             	// value
             	if ((field == 1) && (inputValue.isEmpty())) {
             		Toast.makeText(vi.getContext(), "A contact must have a first name!", Toast.LENGTH_LONG).show(); // DEBUG line
-            	}
+            	} else {
             	
-            	// Conditional brackets for deciding what contact detail to edit
-            	if (field == 1) {
-            		contact.setFirstName(inputValue);
-            		first.setText(inputValue);
-            	} else if (field == 2) {
-            		contact.setMiddleName(inputValue);
-            		middle.setText(inputValue);
-            	} else if (field == 3) {
-            		contact.setLastName(inputValue);
-            		last.setText(inputValue);
-            	} else if (field == 4) {
-            		contact.setMobile(inputValue);
-            		mobile.setText(inputValue);
-            	} else if (field == 5) {
-            		contact.setHomePhone(inputValue);
-            		home.setText(inputValue);
-            	} else if (field == 6) {
-            		contact.setWorkPhone(inputValue);
-            		work.setText(inputValue);
-            	} else if (field == 7) {
-            		contact.setEmail(inputValue);
-            		email.setText(inputValue);
-            	} else if (field == 8) {
-            		contact.setHomeAddress(inputValue);
-            		homeAd.setText(inputValue);
-            	} 
-            	//Toast.makeText(vi.getContext(), inputValue, Toast.LENGTH_LONG).show(); // DEBUG line
-
-            	// Refresh the contact database in the filesystem so that it is made 
-            	// up-to-date whenever a change is made, without having to wait for 
-            	// user to close activities.
-            	ContactDatabase.saveState();
+	            	// Conditional brackets for deciding what contact detail to edit
+	            	if (field == 1) {
+	            		contact.setFirstName(inputValue);
+	            		first.setText(inputValue);
+	            	} else if (field == 2) {
+	            		contact.setMiddleName(inputValue);
+	            		middle.setText(inputValue);
+	            	} else if (field == 3) {
+	            		contact.setLastName(inputValue);
+	            		last.setText(inputValue);
+	            	} else if (field == 4) {
+	            		contact.setMobile(inputValue);
+	            		mobile.setText(inputValue);
+	            	} else if (field == 5) {
+	            		contact.setHomePhone(inputValue);
+	            		home.setText(inputValue);
+	            	} else if (field == 6) {
+	            		contact.setWorkPhone(inputValue);
+	            		work.setText(inputValue);
+	            	} else if (field == 7) {
+	            		contact.setEmail(inputValue);
+	            		email.setText(inputValue);
+	            	} else if (field == 8) {
+	            		contact.setHomeAddress(inputValue);
+	            		if (inputValue == null) {
+	            			homeAd.setText("");
+	            		} else {
+	            			homeAd.setText(inputValue);
+	            		}
+	            	} 
+	            	//Toast.makeText(vi.getContext(), inputValue, Toast.LENGTH_LONG).show(); // DEBUG line
+	
+	            	// Refresh the contact database in the filesystem so that it is made 
+	            	// up-to-date whenever a change is made, without having to wait for 
+	            	// user to close activities.
+	            	ContactDatabase.saveState();
+            	}
 			}
             
 		});

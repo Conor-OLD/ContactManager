@@ -9,9 +9,31 @@
     tools:context=".AboutActivity" >
 
     <TextView
+        android:id="@+id/aboutTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:text="SE206 Contact Manager project;   by Conor Simmonds, uid: csim080"/>
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="70dp"
+        android:textSize="22sp"
+       android:text="SOFTENG 206\nContact Manager project" />
+
+    <TextView
+        android:id="@+id/aboutTitle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="140dp"
+        android:text="Author: Conor Simmonds\nUID: csim080; SID: 1728423"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/aboutTitle3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="36sp"
+        android:text="About this app" />
 
 </RelativeLayout>
