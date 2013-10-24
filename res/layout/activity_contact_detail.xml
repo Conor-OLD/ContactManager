@@ -8,29 +8,30 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ContactDetail" >
     
-    <TextView
-        android:id="@+id/textViewPageContactDetailTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    
+    
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_marginTop="0dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignLeft="@+id/textViewFirstNameField"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="8px"
-        android:text="@string/contact_detail_header"
-        android:textSize="24sp" />
+        android:src="@drawable/ic_launcher" />
     
     
     
 
     <TextView
         android:id="@+id/textViewFirstNameField"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="80dp"
         android:text="@string/first_name"
         
 		style="@style/ContactFieldNameStyle" />
     
     <TextView
         android:id="@+id/textViewFirstNameData"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="100dp"
         android:text="@string/first_name"
         
         style="@style/ContactFieldDataStyle" />
@@ -48,26 +49,79 @@
     
     <TextView
         android:id="@+id/textViewMiddleNameField"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="125dp"
         android:text="@string/first_name"
         
 		style="@style/ContactFieldNameStyle" />
 
     <TextView
         android:id="@+id/textViewMiddleNameData"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="145dp"
         android:text="@string/first_name"
         
         style="@style/ContactFieldDataStyle" />
     
     <Button
         android:id="@+id/MiddleNameEdit"
-        android:layout_marginTop="40dp"
-        android:layout_alignTop="@+id/textViewFirstNameField"
-        android:text="@string/edit_button"
+        android:layout_alignTop="@+id/textViewLastNameField"
+        android:text="@string/edit_button" 
+        
+        style="@style/ContactFieldEditButtonStyle"/>
+    
+    
+    
+    
+    
+    <TextView
+        android:id="@+id/textViewLastNameField"
+        android:layout_marginTop="170dp"
+        android:text="@string/first_name"
+        
+		style="@style/ContactFieldNameStyle" />
+
+    <TextView
+        android:id="@+id/textViewLastNameData"
+        android:layout_marginTop="190dp"
+        android:text="@string/first_name"
+        
+        style="@style/ContactFieldDataStyle" />
+    
+    <Button
+        android:id="@+id/LastNameEdit"        
+        android:layout_alignTop="@+id/textViewMiddleNameField"
+        android:text="@string/edit_button" 
+        
+        style="@style/ContactFieldEditButtonStyle"/>
+    
+    
+    
+    
+    
+    <TextView
+        android:id="@+id/textViewMobilePhoneField"
+        android:layout_marginTop="365dp"
+        android:text="@string/first_name"
+        
+		style="@style/ContactFieldNameStyle" />
+
+    <TextView
+        android:id="@+id/textViewMobilePhoneData"
+        android:layout_marginTop="385dp"
+        android:text="@string/first_name"
+        
+        style="@style/ContactFieldDataStyle" />
+
+    <Button
+        android:id="@+id/MobilePhoneEdit"
+        android:layout_alignTop="@+id/textViewMobilePhoneField"
+        android:text="@string/edit_button" 
         
         style="@style/ContactFieldEditButtonStyle" />
 
     
+
+    
+    
+>
 
 </RelativeLayout>

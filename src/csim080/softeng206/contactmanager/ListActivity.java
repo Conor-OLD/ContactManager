@@ -144,6 +144,9 @@ public class ListActivity extends Activity {
 			// String displayText = "You clicked item" + Integer.toString(clickedViewPosition);
 			//Toast.makeText(clickedView.getContext(), displayText, Toast.LENGTH_LONG).show(); // DEBUG LINE
 			
+			// Initialize a singleton contact holder
+			ContactSingleton.createInstance(cd.getContactList().get(clickedViewPosition));
+			
 			Intent intent = new Intent();
 			intent.setClass(ListActivity.this, ContactDetail.class);
 			
