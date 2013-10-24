@@ -35,5 +35,6 @@
     <string name="contact_detail_header">Contact Information</string>
     <string name="edit_button">Edit</string>
     <string name="delete">Delete Contact</string>
+    <string name="toggle_capital">Toggle Auto-capitalisation</string>
 
 </resources>

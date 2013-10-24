@@ -67,6 +67,26 @@ public class MainMenu extends Activity {
 				
 			}
 		});
+		
+		// Instantiate the settings button
+		buttonSettingsMenu = (Button)findViewById(R.id.ButtonSettings);
+		
+		// Set up the listener for the button (anonymous class for simplicity)
+		buttonSettingsMenu.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+
+				// Decide the action to be performed upon click (i.e. start
+				// the appropriate activity by setting the class of the new 
+				// Intent object as the ContactListActivity class
+				Intent intent = new Intent();
+				intent.setClass(MainMenu.this, SettingsActivity.class);
+				
+				startActivity(intent);
+				
+			}
+		});
 
 		
 		

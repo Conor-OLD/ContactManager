@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import android.content.Context;
@@ -88,7 +89,7 @@ public class ContactDatabase {
 			try {
 				totalContacts = Integer.parseInt(line);
 			} catch (NumberFormatException e) {
-				System.out.println("Database is corrupt. Exiting...");
+				System.out.println("Database is corrupt while reading totalContacts (" + line + "). Exiting...");
 				System.exit(1);
 			}
 			
@@ -106,10 +107,16 @@ public class ContactDatabase {
 			while ((line = br.readLine()) != null) {
 				try {
 					pid = Integer.parseInt(line);
+					
 				} catch (NumberFormatException e) {
-					System.out.println("Database is corrupt. Exiting...");
-					System.exit(1);
+					System.out.println("Database is corrupt while reading PID (" + line + "). Exiting...");
+					// Assign a new pid
+					
+					pid = totalContacts + 1;
+					
+					//System.exit(1);
 				}
+				
 				first = br.readLine();
 				middle = br.readLine();
 				last = br.readLine();
@@ -122,6 +129,7 @@ public class ContactDatabase {
 				contact = new Contact(first, middle, last, mobile, home, work, email, homeAd);
 				contact.setPid(pid);
 				contactList.add(contact);
+				
 				
 				//System.out.println("End of contact = " + homeAd); //DEBUG LINE
 			}
@@ -222,26 +230,39 @@ public class ContactDatabase {
 	
 	// Sort contact by first name
 	public void sortFirst() {
-		List<Contact> tempContList = new ArrayList<Contact>();
-		Contact nextInOrder;
-		//while (contactList.size() > 0) {
-		nextInOrder = new Contact("ZZZZZZZ", "", "ZZZZZZ", "", "", "", "", "");
+		
+		Collections.sort(contactList, new FirstNameComparator());
+		
+		// First in list must have PID 0, as to prevent an error that occurs
+		// due to a newline always being written before the contact with 0 pid
+		// So, the first contact in the newly sorted list must trade IDs with
+		// the contact that current holds ID 0
 		for (Contact c : contactList) {
-			if (c.getFirstName().compareToIgnoreCase(nextInOrder.getFirstName()) >= 0) {
-				nextInOrder = c;
-				System.out.println(nextInOrder);
+			if (c.getID() == 0) {
+				c.setPid(contactList.get(0).getID());
+				contactList.get(0).setPid(0);
 			}
 		}
-		System.out.println(contactList.size());
-		contactList.remove(nextInOrder);
-		tempContList.add(nextInOrder);
-		//}
-		contactList = tempContList;
+		
 	}
 	
-	public void sortLast() {
-		// Stub; sorts existing list by their last name attributes
-	}
+	// Sort contact by last name
+		public void sortLast() {
+			
+			Collections.sort(contactList, new LastNameComparator());
+			
+			// First in list must have PID 0, as to prevent an error that occurs
+			// due to a newline always being written before the contact with 0 pid
+			// So, the first contact in the newly sorted list must trade IDs with
+			// the contact that current holds ID 0
+			for (Contact c : contactList) {
+				if (c.getID() == 0) {
+					c.setPid(contactList.get(0).getID());
+					contactList.get(0).setPid(0);
+				}
+			}
+			
+		}
 		
 	public Contact searchByString(String keyword) {
 		// Stub method; will search contacts by first name, then last name

@@ -65,11 +65,25 @@ public class ListActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				cd.sortFirst();
-				cd.saveState();
 				listView.invalidateViews();
 			}
 			
 		});
+		
+		// Call the 'sort by last name' algorithm in the contact database,
+		// then tell the list adapter that the data has changed, so the list
+		// needs to be refreshed
+		sortLastButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				cd.sortLast();
+				listView.invalidateViews();
+			}
+			
+		});
+		
+		
 		
 		toMenuButton.setOnClickListener(new View.OnClickListener() {
 			

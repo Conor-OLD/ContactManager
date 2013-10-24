@@ -24,10 +24,10 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int ButtonAddNew=0x7f080032;
-        public static final int ButtonContList=0x7f080033;
-        public static final int ButtonHelp=0x7f080035;
-        public static final int ButtonSettings=0x7f080034;
+        public static final int ButtonAddNew=0x7f080034;
+        public static final int ButtonContList=0x7f080035;
+        public static final int ButtonHelp=0x7f080037;
+        public static final int ButtonSettings=0x7f080036;
         public static final int ContactDetailBack=0x7f080029;
         public static final int ContactDetailDelete=0x7f08002a;
         public static final int EmailAddressEdit=0x7f080025;
@@ -37,8 +37,10 @@ public final class R {
         public static final int LastNameEdit=0x7f080019;
         public static final int MiddleNameEdit=0x7f080016;
         public static final int MobilePhoneEdit=0x7f08001c;
+        public static final int SettingsCapital=0x7f08002f;
+        public static final int SettingsToMenu=0x7f080030;
         public static final int WorkPhoneEdit=0x7f080022;
-        public static final int action_settings=0x7f080036;
+        public static final int action_settings=0x7f080038;
         public static final int button_back_add1=0x7f080004;
         public static final int button_back_add2=0x7f08000b;
         public static final int button_next_add1=0x7f080003;
@@ -52,9 +54,9 @@ public final class R {
         public static final int home_phone=0x7f080006;
         public static final int imageView1=0x7f080010;
         public static final int last_name=0x7f080002;
-        public static final int list_item_text_first_name=0x7f08002f;
-        public static final int list_item_text_last_name=0x7f080030;
-        public static final int list_item_text_mobile_number=0x7f080031;
+        public static final int list_item_text_first_name=0x7f080031;
+        public static final int list_item_text_last_name=0x7f080032;
+        public static final int list_item_text_mobile_number=0x7f080033;
         public static final int list_view=0x7f08002b;
         public static final int middle_name=0x7f080001;
         public static final int mobile_phone=0x7f080005;
@@ -131,6 +133,7 @@ public final class R {
         public static final int title_activity_main_menu=0x7f050002;
         public static final int title_activity_settings=0x7f05001d;
         public static final int title_contact_detail=0x7f050001;
+        public static final int toggle_capital=0x7f050022;
         public static final int view_list=0x7f050005;
         public static final int work_phone=0x7f050011;
         public static final int yes=0x7f050017;

@@ -4,11 +4,17 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 import android.support.v4.app.NavUtils;
 
-// Stub activity class for settings option in main menu
+
 
 public class SettingsActivity extends Activity {
+	
+	private Button toMenuButton;
+	private Button capitalButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +22,46 @@ public class SettingsActivity extends Activity {
 		setContentView(R.layout.activity_settings);
 		// Show the Up button in the action bar.
 		setupActionBar();
+		
+		toMenuButton = (Button)findViewById(R.id.SettingsToMenu);
+		toMenuButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				finish();
+			}
+		});
+		
+		capitalButton = (Button)findViewById(R.id.SettingsCapital);
+		capitalButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				
+				int temp = SettingsManager.loadSettings(getApplicationContext());
+				
+				if (temp == 0) {
+					SettingsManager.saveSettings(getApplicationContext(), 1);
+					Toast.makeText(v.getContext(), "Auto-capitalization turned on.", Toast.LENGTH_LONG).show();
+					
+				} else {
+					SettingsManager.saveSettings(getApplicationContext(), 0);
+					Toast.makeText(v.getContext(), "Auto-capitalization turned off.", Toast.LENGTH_LONG).show();
+				}
+			}
+		});
+		
 	}
+	
+	
+		
+		
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	/**
 	 * Set up the {@link android.app.ActionBar}.
@@ -26,7 +71,7 @@ public class SettingsActivity extends Activity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 	}
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -52,3 +97,4 @@ public class SettingsActivity extends Activity {
 	}
 
 }
+
